@@ -1,1 +1,7 @@
-<p>home works!</p>
+<h1>{{storeObj.name}}</h1>
+<img [src]= 'storeObj.imgUrl' alt="">
+<ul>
+    <li *ngFor="let item of storeObj.branches">
+      {{ item }}
+    </li>
+  </ul>
