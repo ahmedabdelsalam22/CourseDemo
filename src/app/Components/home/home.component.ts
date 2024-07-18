@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IStore } from '../../Models/istore';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -15,9 +16,8 @@ export class HomeComponent {
 
   storeObj:IStore;
   isImgHidden:boolean = false;
-  /**
-   *
-   */
+  feedBack:string = "For testing";
+
   constructor() {
     this.storeObj = {
       name:'Demo' , 
