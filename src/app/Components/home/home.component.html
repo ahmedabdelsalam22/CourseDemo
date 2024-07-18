@@ -1,7 +1,9 @@
 <h1>{{storeObj.name}}</h1>
-<img [src]= 'storeObj.imgUrl' alt="">
+<img [hidden]="isImgHidden" [src]= 'storeObj.imgUrl' alt="">
 <ul>
     <li *ngFor="let item of storeObj.branches">
       {{ item }}
     </li>
-  </ul>
+</ul>
+
+<button type="button" class="btn btn-primary" (click)="HideImg()">Toogle IMage</button>

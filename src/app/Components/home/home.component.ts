@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
 
   storeObj:IStore;
-
+  isImgHidden:boolean = false;
   /**
    *
    */
@@ -24,5 +24,12 @@ export class HomeComponent {
       imgUrl:'https://dummyimage.com/300x200/000/fff' , 
       branches: ["Cairo" , "Assuit", "BNS"]
     }
+  }
+
+  HideImg()
+  {
+    this.isImgHidden = !this.isImgHidden;
+
+    console.log(this.isImgHidden)
   }
 }
