@@ -1,1 +1,22 @@
-<p>product works!</p>
+<table class="table m-3">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">CategoryId</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prd of prdList">
+        <th scope="row">1</th>
+        <td>{{prd.id}}</td>
+        <td>{{prd.name}}</td>
+        <td>{{prd.price}}</td>
+        <td>{{prd.quantity}}</td>
+        <td>{{prd.catId}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
