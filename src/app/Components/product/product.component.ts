@@ -13,6 +13,7 @@ export class ProductComponent {
 
   prdList:IProduct[];
   @Input() CategoryId:number=0;
+  totalPrice:number= 0;
 
   constructor() {
     this.prdList = [
@@ -26,4 +27,10 @@ export class ProductComponent {
   {
     return item.id;
   }
+
+  updateOrderTotalPrice(count:number , price:number)
+  {
+    this.totalPrice += (count*price)
+  }
+
 }
