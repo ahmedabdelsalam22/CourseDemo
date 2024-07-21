@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, input } from '@angular/core';
 
 @Directive({
   selector: '[appLightBox]',
@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class LightBoxDirective {
 
-  highLightColor:string= "red";
+  @Input() highLightColor:string= "red"; 
   constructor(private elementRef : ElementRef)
   {
     this.elementRef.nativeElement.style.border = '2px solid red';
