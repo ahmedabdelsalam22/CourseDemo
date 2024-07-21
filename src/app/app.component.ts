@@ -6,12 +6,13 @@ import { HomeComponent } from "./Components/home/home.component";
 import { FooterComponent } from "./Components/footer/footer.component";
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from "./Components/product/product.component";
+import { OrderMasterComponent } from "./Components/order-master/order-master.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, HomeComponent, FooterComponent, FormsModule, ProductComponent],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent, HomeComponent, FooterComponent, FormsModule, ProductComponent, OrderMasterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
