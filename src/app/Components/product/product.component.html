@@ -6,16 +6,22 @@
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">CategoryId</th>
+        <th scope="col">Image</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prd of prdList">
-        <th scope="row">1</th>
-        <td>{{prd.id}}</td>
+      <tr *ngFor="let prd of prdList; let i=index; trackBy:productTrackedBy " [style.background-color]="(prd.quantity == 0) ? 'red' : 'white'">
+        <td>{{i+1}}</td>
         <td>{{prd.name}}</td>
         <td>{{prd.price}}</td>
-        <td>{{prd.quantity}}</td>
+        <td>
+          <div *ngIf="prd.quantity == 0; else elseBlock">Out of stock</div>
+          <ng-template #elseBlock>{{prd.quantity}}</ng-template>
+        </td>
         <td>{{prd.catId}}</td>
+        <td>
+          <img appLightBox highLightColor="yellow" [src]="prd.imgUrl" alt="image" >
+        </td>
       </tr>
     </tbody>
   </table>
