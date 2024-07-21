@@ -5,9 +5,6 @@
         <option [value]="0" >--Select Category--</option>
         <option *ngFor="let cat of catList" [value]="cat.id" >{{cat.name}}</option>
     </select>
-    <div class="m-3">
-        <h2>{{selectedCateId}}</h2>
-    </div>
  </div>
 <hr>
 
