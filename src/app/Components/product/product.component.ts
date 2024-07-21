@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IProduct } from '../../Models/iproduct';
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class ProductComponent {
 
   prdList:IProduct[];
+  @Input() CategoryId:number=0;
 
   constructor() {
     this.prdList = [
