@@ -1,9 +1,12 @@
 <!-- category field -->
  <div class="m-3">
     <label class="m-1" for="">Select Category</label>
-    <select name="" class="form-control" name="cat" id="CatSel" title="category">
-        <option value="0"></option>
+    <select name="" class="form-control" name="cat" id="CatSel" title="category" [(ngModel)]="selectedCateId">
+        <option *ngFor="let cat of catList" [value]="cat.id" >{{cat.name}}</option>
     </select>
+    <div class="m-3">
+        <h2>{{selectedCateId}}</h2>
+    </div>
  </div>
 <hr>
 
