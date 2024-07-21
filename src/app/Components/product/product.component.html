@@ -13,7 +13,7 @@
       <tr *ngFor="let prd of prdList; let i=index; trackBy:productTrackedBy " [style.background-color]="(prd.quantity == 0) ? 'red' : 'white'">
         <td>{{i+1}}</td>
         <td>{{prd.name}}</td>
-        <td>{{prd.price | currency}}</td>
+        <td>{{prd.price | currency:'EGP'}}</td>
         <td>
           <div *ngIf="prd.quantity == 0; else elseBlock">Out of stock</div>
           <ng-template #elseBlock>{{prd.quantity}}</ng-template>
