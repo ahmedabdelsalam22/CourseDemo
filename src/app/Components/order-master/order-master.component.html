@@ -11,10 +11,10 @@
 <!-- Prd list -->
 
 <div class="border-3">
-    <app-product [CategoryId]="selectedCateId" ></app-product>
+    <app-product [CategoryId]="selectedCateId" (onTotalPriceChanges)="updateTotalPrice($event)" ></app-product>
 </div>
 <!-- total price -->
 
 <hr>
 
-<h3>Total Price : 350</h3>
+<h3>Total Price : {{recievedTotalPrice}}</h3>

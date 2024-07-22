@@ -15,6 +15,7 @@ export class OrderMasterComponent {
 
   catList:ICategory[];
   selectedCateId:number=0;
+  recievedTotalPrice:number=0;
 
   constructor() {
     this.catList = [
@@ -22,6 +23,11 @@ export class OrderMasterComponent {
       {id:2, name: "Mobile" },
       {id:3, name: "Accessoires" },
     ];
+  }
+
+  updateTotalPrice(totalPrice: number)
+  {
+    this.recievedTotalPrice = totalPrice;
   }
 
 }
