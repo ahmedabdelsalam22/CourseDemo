@@ -3,6 +3,7 @@ import { ProductComponent } from "../product/product.component";
 import { ICategory } from '../../Models/icategory';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IProduct } from '../../Models/iproduct';
 
 @Component({
   selector: 'app-order-master',
@@ -16,6 +17,7 @@ export class OrderMasterComponent {
   catList:ICategory[];
   selectedCateId:number=0;
   recievedTotalPrice:number=0;
+  shoppingCart:IProduct[] = [];
 
   constructor() {
     this.catList = [
@@ -28,6 +30,12 @@ export class OrderMasterComponent {
   updateTotalPrice(totalPrice: number)
   {
     this.recievedTotalPrice = totalPrice;
+  }
+
+  updateCart(products:IProduct[])
+  {
+     //this.shoppingCart.push(products);
+     this.shoppingCart = products;
   }
 
 }

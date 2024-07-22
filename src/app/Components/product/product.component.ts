@@ -19,6 +19,10 @@ export class ProductComponent implements OnChanges{
 
   @Output() onTotalPriceChanges:EventEmitter<number>;
 
+  shoppingCart:IProduct[]=[];
+
+  @Output() onCartUpdated:EventEmitter<IProduct[]>;
+
   constructor() {
     this.prdList = [
       {id:7, name: "IPhone 13", price:30000 , quantity:4 , imgUrl:'https://dummyimage.com/100x100/000/fff' , catId:2},
@@ -28,6 +32,7 @@ export class ProductComponent implements OnChanges{
     ];
 
     this.onTotalPriceChanges = new EventEmitter<number>();
+    this.onCartUpdated = new EventEmitter<IProduct[]>();
   }
   ngOnChanges(changes: SimpleChanges): void {
     if(this.CategoryId == 0)
@@ -51,6 +56,28 @@ export class ProductComponent implements OnChanges{
   {
     this.totalPrice += (count*price)
     this.onTotalPriceChanges.emit(this.totalPrice);
+  }
+
+  addToCart(prdId:number , count:number , price:number)
+  {
+      // update total price
+      this.totalPrice += (count*price)
+      this.onTotalPriceChanges.emit(this.totalPrice);
+      
+      
+      // add prd to cart
+      let newProduct = this.prdList.find(x=>x.id == prdId) as IProduct;
+      
+      if(this.shoppingCart.includes(newProduct))
+      {
+        let prd = this.shoppingCart.find(x=>x.id == newProduct.id) as IProduct;
+        prd.quantity++; 
+      }
+      else{
+        this.shoppingCart.push(newProduct)
+      } 
+      
+     this.onCartUpdated.emit(this.shoppingCart);
   }
 
 }

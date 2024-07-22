@@ -27,14 +27,8 @@
           <input #itemsCount type="number" class="form-control">
         </td>
         <td>
-         <button type="submit" class="btn btn-secondary" (click)="updateOrderTotalPrice(+itemsCount.value , prd.price)">Add To Cart</button>
+         <button type="submit" class="btn btn-secondary" (click)="addToCart(prd.id ,+itemsCount.value , prd.price)">Add To Cart</button>
         </td>
       </tr>
     </tbody>
   </table>
-
-  <div class="m-3">
-    <h4>CategoryId : {{CategoryId}}</h4>
-    <h4>For Test .. Total Price : {{totalPrice}}</h4>
-  </div>
-  
