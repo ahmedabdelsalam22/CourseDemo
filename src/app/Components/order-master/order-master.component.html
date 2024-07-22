@@ -2,7 +2,7 @@
  <div class="m-3">
     <label class="m-1" for="">Select Category</label>
     <select name="" class="form-control" name="cat" id="CatSel" title="category" [(ngModel)]="selectedCateId">
-        <option [value]="0" >--Select Category--</option>
+        <option value="0" >--All Products--</option>
         <option *ngFor="let cat of catList" [value]="cat.id" >{{cat.name}}</option>
     </select>
  </div>

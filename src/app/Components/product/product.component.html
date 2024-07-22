@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prd of prdList; let i=index; trackBy:productTrackedBy " [style.background-color]="(prd.quantity == 0) ? 'red' : 'white'">
+      <tr *ngFor="let prd of prdListByCatId; let i=index; " [style.background-color]="(prd.quantity == 0) ? 'red' : 'white'">
         <td>{{i+1}}</td>
         <td>{{prd.name}}</td>
         <td>{{prd.price | currency:'EGP'}}</td>
