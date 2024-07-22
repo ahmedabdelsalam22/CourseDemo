@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, output, SimpleChanges } from '@angular/core';
 import { IProduct } from '../../Models/iproduct';
 import { CommonModule } from '@angular/common';
 
@@ -17,6 +17,8 @@ export class ProductComponent implements OnChanges{
 
   prdListByCatId:IProduct[] = [];
 
+  @Output() onTotalPriceChanges:EventEmitter<number>;
+
   constructor() {
     this.prdList = [
       {id:7, name: "IPhone 13", price:30000 , quantity:4 , imgUrl:'https://dummyimage.com/100x100/000/fff' , catId:2},
@@ -24,6 +26,8 @@ export class ProductComponent implements OnChanges{
       {id:20, name: "Symsung A51", price:10000 , quantity:2 , imgUrl:'https://dummyimage.com/100x100/000/fff' , catId:2},
       {id:21, name: "Mac M1 2020", price:1000 , quantity:3 , imgUrl:'https://dummyimage.com/100x100/000/fff' , catId:1},
     ];
+
+    this.onTotalPriceChanges = new EventEmitter<number>();
   }
   ngOnChanges(changes: SimpleChanges): void {
     if(this.CategoryId == 0)
@@ -46,6 +50,7 @@ export class ProductComponent implements OnChanges{
   updateOrderTotalPrice(count:number , price:number)
   {
     this.totalPrice += (count*price)
+    this.onTotalPriceChanges.emit(this.totalPrice);
   }
 
 }
