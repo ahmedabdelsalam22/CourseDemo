@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IEmployees } from '../Models/iemployees';
-import { Observable } from 'rxjs';
+import { catchError, Observable , throwError} from 'rxjs';
 
 
 @Injectable({
@@ -16,7 +16,9 @@ export class EmpService {
 
   getAllEmps() : Observable<IEmployees[]>
   {
-    return this.httpClient.get<IEmployees[]>(this.apiUrl);
+    return this.httpClient.get<IEmployees[]>(this.apiUrl).pipe(catchError((err)=>{
+      return throwError(()=> err.message || "server error");
+    }));
   }
 
 }
