@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { EmpService } from '../../Services/emp.service';
 import { IEmployees } from '../../Models/iemployees';
 import { CommonModule } from '@angular/common';
-import { error } from 'console';
 
 @Component({
   selector: 'app-emp',
