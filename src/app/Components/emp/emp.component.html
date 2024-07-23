@@ -1,0 +1,15 @@
+<table class="table m-3">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of empsList; let i=index; ">
+        <td>{{i+1}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.age}}</td>
+      </tr>
+    </tbody>
+  </table>

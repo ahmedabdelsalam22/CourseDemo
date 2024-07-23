@@ -1,58 +1,73 @@
 <!-- category field -->
- <div class="m-3">
-    <label class="m-1" for="">Select Category</label>
-    <select name="" class="form-control" name="cat" id="CatSel" title="category" [(ngModel)]="selectedCateId">
-        <option value="0" >--All Products--</option>
-        <option *ngFor="let cat of catList" [value]="cat.id" >{{cat.name}}</option>
-    </select>
- </div>
-<hr>
+<div class="m-3">
+  <label class="m-1" for="">Select Category</label>
+  <select
+    name=""
+    class="form-control"
+    name="cat"
+    id="CatSel"
+    title="category"
+    [(ngModel)]="selectedCateId"
+  >
+    <option value="0">--All Products--</option>
+    <option *ngFor="let cat of catList" [value]="cat.id">{{ cat.name }}</option>
+  </select>
+</div>
+<hr />
 
 <!-- Prd list -->
 
 <div class="border-3">
-    <app-product [CategoryId]="selectedCateId" 
+  <app-product
+    [CategoryId]="selectedCateId"
     (onTotalPriceChanges)="updateTotalPrice($event)"
     (onCartUpdated)="updateCart($event)"
-    ></app-product>
+  ></app-product>
 </div>
 <!-- total price -->
 
-<hr>
-
-<h3>Total Price : {{recievedTotalPrice}}</h3>
-
-
-<hr>
+<hr />
 
 <table class="table m-3">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">CategoryId</th>
-        <th scope="col">Image</th>
-        <th scope="col">count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let prd of shoppingCart; let i=index; " [style.background-color]="(prd.quantity == 0) ? 'red' : 'white'">
-        <td>{{i+1}}</td>
-        <td>{{prd.name}}</td>
-        <td>{{prd.price | currency:'EGP'}}</td>
-        <td>
-          <div *ngIf="prd.quantity == 0; else elseBlock">Out of stock</div>
-          <ng-template #elseBlock>{{prd.quantity}}</ng-template>
-        </td>
-        <td>{{prd.catId}}</td>
-        <td>
-          <img appLightBox highLightColor="yellow" [src]="prd.imgUrl" alt="image" >
-        </td>
-        <td>
-          <input #itemsCount type="number" class="form-control">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">CategoryId</th>
+      <th scope="col">Image</th>
+      <th scope="col">count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let prd of shoppingCart; let i = index"
+      [style.background-color]="prd.quantity == 0 ? 'red' : 'white'"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>{{ prd.name }}</td>
+      <td>{{ prd.price | currency : "EGP" }}</td>
+      <td>
+        <div *ngIf="prd.quantity == 0; else elseBlock">Out of stock</div>
+        <ng-template #elseBlock>{{ prd.quantity }}</ng-template>
+      </td>
+      <td>{{ prd.catId }}</td>
+      <td>
+        <img
+          appLightBox
+          highLightColor="yellow"
+          [src]="prd.imgUrl"
+          alt="image"
+        />
+      </td>
+      <td>
+        <input #itemsCount type="number" class="form-control" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3>Total Price : {{ recievedTotalPrice }}</h3>
