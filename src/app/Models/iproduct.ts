@@ -5,4 +5,5 @@ export interface IProduct {
     quantity:number;
     imgUrl:string;
     catId?:number;
+    details:string;
 }
