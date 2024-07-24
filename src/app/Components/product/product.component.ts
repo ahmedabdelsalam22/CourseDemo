@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, output, SimpleChange
 import { IProduct } from '../../Models/iproduct';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../Services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +21,7 @@ export class ProductComponent implements OnChanges{
   @Output() onTotalPriceChanges:EventEmitter<number>;
   @Output() onCartUpdated:EventEmitter<IProduct[]>;
 
-  constructor(private productService:ProductsService) {
+  constructor(private productService:ProductsService , private router:Router) {
     this.onTotalPriceChanges = new EventEmitter<number>();
     this.onCartUpdated = new EventEmitter<IProduct[]>();
   }
@@ -42,4 +43,8 @@ export class ProductComponent implements OnChanges{
       this.productService.addProductToCart(prdId , this.onCartUpdated);
   }
 
+  openProductDetails(pid:number)
+  {
+   this.router.navigate(['/ProductDetails' , pid]);
+  }
 }

@@ -29,6 +29,9 @@
         <td>
          <button type="submit" class="btn btn-secondary" (click)="addToCart(prd.id ,+itemsCount.value , prd.price)">Add To Cart</button>
         </td>
+        <td>
+          <button type="submit" class="btn btn-secondary" (click)="openProductDetails(prd.id)">Details</button>
+         </td>
       </tr>
     </tbody>
   </table>
