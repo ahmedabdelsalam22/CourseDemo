@@ -3,8 +3,10 @@
       <img [src]="product.imgUrl" alt="Product Image">
     </div>
     <div class="product-info">
-      
         <p class="product-description">{{ product.details }}</p>
       <p class="product-price">Price: ${{ product.price }}</p>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="back()">Back</button>
     </div>
   </div>
