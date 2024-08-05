@@ -1,6 +1,7 @@
 import { Component, importProvidersFrom, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormGroupDirective, ReactiveFormsModule,FormsModule }  from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, FormGroupDirective, ReactiveFormsModule,FormsModule, MinLengthValidator, MinValidator }  from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { match } from 'node:assert';
 
 @Component({
   selector: 'app-user-register',
@@ -29,7 +30,9 @@ export class UserRegisterComponent implements OnInit {
       confirmPassword:['', Validators.required],
       reachedBy: [''],
       reachedByOther:[''],
-    });
+    },{ validator: this.passwordsMatchValidator });
+    
+    
     
     // define the form 
     /*
@@ -57,6 +60,12 @@ export class UserRegisterComponent implements OnInit {
   register()
   {
 
+  }
+  passwordsMatchValidator(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+
+    return password && confirmPassword && password === confirmPassword ? null : { passwordsDoNotMatch: true };
   }
 
   // to can using it in validation in ui
