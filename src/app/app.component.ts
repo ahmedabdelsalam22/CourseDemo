@@ -4,7 +4,7 @@ import { HeaderComponent } from "./Components/header/header.component";
 import { SidebarComponent } from "./Components/sidebar/sidebar.component";
 import { HomeComponent } from "./Components/home/home.component";
 import { FooterComponent } from "./Components/footer/footer.component";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from "./Components/product/product.component";
 import { OrderMasterComponent } from "./Components/order-master/order-master.component";
 import { EmpComponent } from "./Components/emp/emp.component";
@@ -15,10 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, SidebarComponent, HomeComponent, FooterComponent, FormsModule,
-     ProductComponent, OrderMasterComponent, EmpComponent, HttpClientModule ],
+     ProductComponent, OrderMasterComponent, EmpComponent, HttpClientModule, ReactiveFormsModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title:string = 'CourseDemo';
+  
+
 }

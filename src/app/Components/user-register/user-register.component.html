@@ -1,0 +1,71 @@
+<form class="m-4" [formGroup]="userRegisterFormGroup">
+    <div class="mb-3">
+      <label for="fName" class="form-label">Full Name</label>
+      <input type="text" formControlName="name"class="form-control"name="fName" id="fName" placeholder="" 
+      [class.is-valid]="name.valid" [class.is-invalid]="name.invalid && name.touched">
+
+      <div [hidden]="name.valid || name.untouched">
+        <small *ngIf="name.errors?.['required']" id="helpId" class="form-text text-muted d-block">User Name is Required</small>
+        <small *ngIf="name.errors?.['minlength']" id="helpId2" class="form-text text-muted d-block">User Name must be 3 letters at least</small>
+        <small *ngIf="name.errors?.['forbiddenName']" id="helpId3" class="form-text text-muted d-block">User name can't be {{name.errors?.['forbiddenName']?.value}}</small>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="uEmail" class="form-label">Email</label>
+        <input formControlName="email" type="Email" class="form-control" name="uEmail" id="uEmail" placeholder="">
+    </div>
+    <div formGroupName="address">
+        <div class="mb-3">
+            <label for="uStreet" class="form-label">Street</label>
+            <input formControlName="street" type="text" class="form-control" name="uStreet" id="uStreet" placeholder="">
+        </div>
+        <div class="mb-3">
+            <label for="uPostalCode" class="form-label">Postal Code</label>
+            <input formControlName="postalCode" type="text" class="form-control" name="uPostalCode" id="uPostalCode" placeholder="">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="uMobile" class="form-label">MobileNo</label>
+        <input formControlName="mobileNo" type="text" class="form-control" name="uMobile" id="uMobile" placeholder="">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">How did you find us?</label>
+        <div class="m-2" class="btn-group" role="group">
+            <input formControlName="reachedBy" type="radio" value="Facebook" class="btn-check" name="reachedBy" id="fb" autocomplete="off">
+            <label class="btn btn-outline-primary" for="fb">Facebook</label>
+          
+            <input formControlName="reachedBy" type="radio" value="LinkedIn" class="btn-check" name="reachedBy" id="LinkedIn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="LinkedIn">LinkedIn</label>
+          
+            <input formControlName="reachedBy" type="radio" value="Other" class="btn-check" name="reachedBy" id="other" autocomplete="off">
+            <label class="btn btn-outline-primary" for="other">Other</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="reachedByOther" class="form-label">Please specify other:</label>
+        <input formControlName="reachedByOther" type="text" class="form-control" name="reachedByOther" id="reachedByOther" placeholder="">
+    </div>
+
+    <div class="mb-3">
+        <label for="uPassword" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" name="uPassword" id="uPassword" placeholder="">
+    </div>
+    <div class="mb-3">
+        <label for="uConfirmPassword" class="form-label">Confirm Password</label>
+        <input formControlName="confirmPassword" type="password" class="form-control" name="uConfirmPassword" id="uConfirmPassword" placeholder="">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+<hr>
+<div class="bg-warning">
+    <h4>
+        <div>For Test</div>
+        <div>{{userRegisterFormGroup.value | json}}  </div>
+    </h4>
+</div>
