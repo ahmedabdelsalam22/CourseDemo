@@ -27,24 +27,24 @@
     </div>
     <div class="mb-3">
         <label for="uMobile" class="form-label">MobileNo</label>
-        <input formControlName="mobileNo" type="text" class="form-control" name="uMobile" id="uMobile" placeholder="">
+        <input formArrayName="mobileNo" type="text" class="form-control" name="uMobile" id="uMobile" placeholder="">
     </div>
 
     <div class="mb-3">
         <label class="form-label">How did you find us?</label>
         <div class="m-2" class="btn-group" role="group">
-            <input formControlName="reachedBy" type="radio" value="Facebook" class="btn-check" name="reachedBy" id="fb" autocomplete="off">
+            <input formControlName="reachedBy" type="radio" value="Facebook" (change)="updateReachedOtherValidations()" class="btn-check" name="reachedBy" id="fb" autocomplete="off">
             <label class="btn btn-outline-primary" for="fb">Facebook</label>
           
-            <input formControlName="reachedBy" type="radio" value="LinkedIn" class="btn-check" name="reachedBy" id="LinkedIn" autocomplete="off">
+            <input formControlName="reachedBy" type="radio" value="LinkedIn" (change)="updateReachedOtherValidations()" class="btn-check" name="reachedBy" id="LinkedIn" autocomplete="off">
             <label class="btn btn-outline-primary" for="LinkedIn">LinkedIn</label>
           
-            <input formControlName="reachedBy" type="radio" value="Other" class="btn-check" name="reachedBy" id="other" autocomplete="off">
+            <input formControlName="reachedBy" type="radio" value="Other" (change)="updateReachedOtherValidations()" class="btn-check" name="reachedBy" id="other" autocomplete="off">
             <label class="btn btn-outline-primary" for="other">Other</label>
         </div>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3" [hidden]="!isReachedByOther">
         <label for="reachedByOther" class="form-label">Please specify other:</label>
         <input formControlName="reachedByOther" type="text" class="form-control" name="reachedByOther" id="reachedByOther" placeholder="">
     </div>
@@ -58,7 +58,7 @@
         <input formControlName="confirmPassword" type="password" class="form-control" name="uConfirmPassword" id="uConfirmPassword" placeholder="">
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button [disabled]="userRegisterFormGroup.invalid" type="submit" class="btn btn-success">Submit</button>
 </form>
 
 

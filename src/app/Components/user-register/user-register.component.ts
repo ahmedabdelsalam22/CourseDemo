@@ -25,10 +25,10 @@ export class UserRegisterComponent implements OnInit {
         street: [''],
         postalCode: [''],
       }),
-      password:[''],
-      confirmPassword:[''],
+      password:['', Validators.required],
+      confirmPassword:['', Validators.required],
       reachedBy: [''],
-      reachedByOther: [''],
+      reachedByOther:[''],
     });
     
     // define the form 
@@ -62,6 +62,23 @@ export class UserRegisterComponent implements OnInit {
   // to can using it in validation in ui
   get name(){
     return this.userRegisterFormGroup.controls['name'];
+  }
+
+  get isReachedByOther() : boolean
+  {
+   return this.userRegisterFormGroup.controls['reachedBy'].value == "Other"
+  }
+
+  updateReachedOtherValidations()
+  {
+    if(this.userRegisterFormGroup.controls['reachedBy'].value == "Other")
+    {
+      this.userRegisterFormGroup.controls['reachedByOther'].setValidators([Validators.required]);
+    }else{
+      this.userRegisterFormGroup.controls['reachedByOther'].clearValidators();
+    }
+
+    this.userRegisterFormGroup.controls['reachedByOther'].updateValueAndValidity();
   }
 
 }
