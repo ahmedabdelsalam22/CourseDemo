@@ -5,6 +5,7 @@ import { OrderMasterComponent } from './Components/order-master/order-master.com
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { MainLayoutComponent } from './Components/main-layout/main-layout.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { UserRegisterComponent } from './Components/user-register/user-register.component';
 
 export const routes: Routes = 
 [
@@ -14,5 +15,6 @@ export const routes: Routes =
         {path:"Order" , component:OrderMasterComponent},
         {path:"ProductDetails/:pid" , component:ProductDetailsComponent},
     ]},
+    {path:"Register" , component:UserRegisterComponent},
     {path:"**" , component:NotFoundComponent},
 ];
