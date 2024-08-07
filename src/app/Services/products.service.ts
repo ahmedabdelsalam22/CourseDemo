@@ -1,16 +1,24 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { IProduct } from '../Models/iproduct';
+import {Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { url } from 'inspector';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
 
-  prdList:IProduct[];
+  prdList:IProduct[]= [];
   shoppingCart:IProduct[]=[];
 
-  constructor() 
+  baseApiUrl:string="http://localhost:3000/";
+  productsUrl:string = this.baseApiUrl+"products";
+  categoriesUrl:string = this.baseApiUrl+"categories";
+
+  constructor(private http: HttpClient) 
   {
+    /*
     this.prdList = [
       {id:7, name: "IPhone 13", price:30000 , quantity:4 , imgUrl:'https://dummyimage.com/100x100/000/fff' , 
         catId:2,details:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},
@@ -21,7 +29,14 @@ export class ProductsService {
       {id:21, name: "Mac M1 2020", price:1000 , quantity:3 , imgUrl:'https://dummyimage.com/100x100/000/fff' ,
          catId:1,details:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},
     ];
+     */
 
+    this.http.get(this.productsUrl).subscribe({
+      next : (data)=>{
+          this.prdList = data as IProduct[];
+      }
+    });
+    
   }
 
   getProductsByCategory(catId:number)
