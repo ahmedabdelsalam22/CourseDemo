@@ -47,10 +47,14 @@ export class ProductsService {
       }
     });
 
-    this.http.post(this.productsUrl, this.createdPrd ).subscribe({
+    this.http.post(this.productsUrl, this.createdPrd).subscribe({
       next : (data)=>{}
     });
     
+    // delete 
+    this.http.delete(this.productsUrl+"/70").subscribe({
+      complete:()=>{console.log("deleted prd")}
+    });
   }
 
   getProductsByCategory(catId:number)

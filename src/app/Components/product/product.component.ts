@@ -3,6 +3,7 @@ import { IProduct } from '../../Models/iproduct';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../Services/products.service';
 import { Router } from '@angular/router';
+import { ProductsAPIService } from '../../Services/products-api.service';
 
 @Component({
   selector: 'app-product',
@@ -21,12 +22,15 @@ export class ProductComponent implements OnChanges{
   @Output() onTotalPriceChanges:EventEmitter<number>;
   @Output() onCartUpdated:EventEmitter<IProduct[]>;
 
-  constructor(private productService:ProductsService , private router:Router) {
+  constructor(private productService:ProductsService , private router:Router, private prdApi:ProductsAPIService) {
     this.onTotalPriceChanges = new EventEmitter<number>();
     this.onCartUpdated = new EventEmitter<IProduct[]>();
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.prdListByCatId = this.productService.getProductsByCategory(this.CategoryId);
+    //this.prdListByCatId = this.productService.getProductsByCategory(this.CategoryId);
+    this.prdApi.getProductByCatId(this.CategoryId).subscribe(prd=>{
+      this.prdListByCatId = prd; 
+    });
   }
 
   /* 
