@@ -31,7 +31,7 @@ export class ProductsAPIService {
 
   getProductByCatId(catId:number): Observable<IProduct[]>
   {
-    return this.http.get<IProduct[]>(`${this.productsUrl}${catId}`);
+    return this.http.get<IProduct[]>(this.productsUrl+"/"+catId);
   }
 
   createProduct(prd:IProduct) : Observable<IProduct>

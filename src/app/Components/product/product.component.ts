@@ -26,11 +26,13 @@ export class ProductComponent implements OnChanges{
     this.onTotalPriceChanges = new EventEmitter<number>();
     this.onCartUpdated = new EventEmitter<IProduct[]>();
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     //this.prdListByCatId = this.productService.getProductsByCategory(this.CategoryId);
-    this.prdApi.getProductByCatId(this.CategoryId).subscribe(prd=>{
+    /*this.prdApi.getProductByCatId(this.CategoryId).subscribe(prd=>{
       this.prdListByCatId = prd; 
-    });
+    });*/
+    this.getProductsByCategory(this.CategoryId);
   }
 
   /*  
@@ -39,6 +41,24 @@ export class ProductComponent implements OnChanges{
     return item.id;
   }
   */
+
+  getProductsByCategory(catId:number)
+  {
+      if(catId == 0)
+      {
+         this.prdApi.getAllProducts().subscribe(data=>{
+          this.prdListByCatId = data; 
+         });
+      }
+      else
+      {
+        this.prdApi.getProductByCatId(this.CategoryId).subscribe(prd=>{
+          this.prdListByCatId = prd; 
+        });
+      }
+
+      return this.prdListByCatId;
+  }
 
   addToCart(prdId:number , count:number , price:number)
   {
