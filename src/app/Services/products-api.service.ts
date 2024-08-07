@@ -31,12 +31,12 @@ export class ProductsAPIService {
 
   getProductByCatId(catId:number): Observable<IProduct[]>
   {
-    return this.http.get<IProduct[]>(`${this.productsUrl}${catId}`);
+    return this.http.get<IProduct[]>(this.productsUrl+"/"+catId);
   }
 
-  createProduct(prd:IProduct)
+  createProduct(prd:IProduct) : Observable<IProduct>
   {
-     this.http.post(this.productsUrl, prd, this.httpOptions);
+    return this.http.post<IProduct>(this.productsUrl, prd, this.httpOptions);
   }
 }
 
