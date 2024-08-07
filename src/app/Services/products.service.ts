@@ -16,6 +16,16 @@ export class ProductsService {
   productsUrl:string = this.baseApiUrl+"products";
   categoriesUrl:string = this.baseApiUrl+"categories";
 
+  createdPrd: IProduct = {
+    "id": 1,
+    "name": "IPhone 12",
+    "price": 6000,
+    "quantity": 0,
+    "imgUrl": "https://dummyimage.com/100x100/000/fff",
+    "catId": 2,
+    "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  };
+
   constructor(private http: HttpClient) 
   {
     /*
@@ -35,6 +45,10 @@ export class ProductsService {
       next : (data)=>{
           this.prdList = data as IProduct[];
       }
+    });
+
+    this.http.post(this.productsUrl, this.createdPrd ).subscribe({
+      next : (data)=>{}
     });
     
   }
