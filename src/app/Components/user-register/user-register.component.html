@@ -56,7 +56,7 @@
     <div class="mb-3">
         <label for="uConfirmPassword" class="form-label">Confirm Password</label>
         <input formControlName="confirmPassword" type="password" class="form-control" name="uConfirmPassword" id="uConfirmPassword" placeholder="">
-        <div *ngIf="userRegisterFormGroup.errors?.['passwordsDoNotMatch'] && userRegisterFormGroup.get('confirmPassword')?.touched">
+        <div class="bg-warning" *ngIf="userRegisterFormGroup.errors?.['passwordsDoNotMatch'] && userRegisterFormGroup.get('confirmPassword')?.touched">
             <small>Passwords do not match.</small>
           </div>
     </div>

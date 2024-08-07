@@ -45,7 +45,7 @@ export class ProductDetailsComponent implements OnDestroy{
     for(let sub of this.subiscription)
     {
       sub.unsubscribe();
-    }
+    } 
   }
 
   back(){
