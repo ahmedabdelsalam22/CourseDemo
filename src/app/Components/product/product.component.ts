@@ -33,7 +33,7 @@ export class ProductComponent implements OnChanges{
     });
   }
 
-  /* 
+  /*  
   productTrackedBy(index:number, item:IProduct)
   {
     return item.id;
