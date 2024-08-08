@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProduct } from '../Models/iproduct';
 import { json } from 'stream/consumers';
+import { IpcNetConnectOpts } from 'net';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,18 @@ export class ProductsAPIService {
   {
     return this.http.post<IProduct>(this.productsUrl, prd, this.httpOptions);
   }
+
+  updateProduct(pid:number, prd:IProduct):Observable<IProduct>
+  {
+    return this.http.put<IProduct>(this.productsUrl+"/"+pid , prd, this.httpOptions);
+  }
+
+  deleteProduct(pid:number) : Observable<IProduct>
+  {
+    return this.http.delete<IProduct>(this.productsUrl+"/"+pid);
+  }
+
+
 }
 
 
