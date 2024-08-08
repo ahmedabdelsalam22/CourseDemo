@@ -7,6 +7,7 @@ import { MainLayoutComponent } from './Components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { UserRegisterComponent } from './Components/user-register/user-register.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
+import { EditProductComponent } from './Components/edit-product/edit-product.component';
 
 export const routes: Routes = 
 [
@@ -16,7 +17,7 @@ export const routes: Routes =
         {path:"Order" , component:OrderMasterComponent},
         {path:"ProductDetails/:pid" , component:ProductDetailsComponent},
         {path:"AddProduct", component:AddProductComponent},
-        //{path:"EditProduct/:pid", component:AddProductComponent},
+        {path:"EditProduct", component:EditProductComponent},
     ]}, 
     {path:"Register" , component:UserRegisterComponent},
     {path:"**" , component:NotFoundComponent},
