@@ -21,7 +21,7 @@ export class AddProductComponent{
       name: "Nokia",
       price: 6000,
       quantity: 2,
-      imgUrl: "https://picsum.photos/seed/picsum/200/300",
+      imgUrl: "https://picsum.photos/seed/picsum/100/100",
       catId: 2,
       details: "Lorem has been the industry's standard dummy texve centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     }
